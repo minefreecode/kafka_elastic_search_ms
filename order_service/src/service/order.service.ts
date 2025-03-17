@@ -89,6 +89,11 @@ export const DeleteOrder = async (
   return true;
 };
 
+/**
+ * Прослушивание сообщение с топика Kafka
+ * @param message
+ * @constructor
+ */
 export const HandleSubscription = async (message: MessageType) => {
   console.log("Message received by order Kafka consumer", message);
 

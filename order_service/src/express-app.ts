@@ -6,19 +6,19 @@ import { httpLogger, HandleErrorWithLogger } from "./utils";
 import { InitializeBroker } from "./service/broker.service";
 
 export const ExpressApp = async () => {
-  const app = express();
+  const app = express(); //Создаем объект сервера
   app.use(cors());
   app.use(express.json());
   app.use(httpLogger);
 
-  await InitializeBroker();
+  await InitializeBroker(); //Инициализация брокера кафки
 
-  app.use(cartRoutes);
-  app.use(orderRoutes);
+  app.use(cartRoutes);//Подключаем маршруты для работы с корзиной
+  app.use(orderRoutes);//Подключаем маршруты для работы с заказами
 
   app.use("/", (req: Request, res: Response, _: NextFunction) => {
     return res.status(200).json({ message: "I am healthy!" });
-  });
+  }); //Если делаем такой запрос /, то возвращаем сообщенеи что я в порядке
 
   app.use(HandleErrorWithLogger);
 

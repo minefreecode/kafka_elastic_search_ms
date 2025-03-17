@@ -1,12 +1,23 @@
 import { ICatalogRepository } from "../interface/catalogRepository.interface";
 
+/**
+ * Каталог сервиса
+ */
 export class CatalogService {
   private _repository: ICatalogRepository;
 
+  /**
+   * В конструкторе получаем репозиторий
+   * @param repository
+   */
   constructor(repository: ICatalogRepository) {
     this._repository = repository;
   }
 
+  /**
+   * Создаем товар
+   * @param input
+   */
   async createProduct(input: any) {
     const data = await this._repository.create(input);
     if (!data.id) {
@@ -15,6 +26,11 @@ export class CatalogService {
     return data;
   }
 
+  /**
+   * Обновляем товар
+   *
+   * @param input
+   */
   async updateProduct(input: any) {
     const data = await this._repository.update(input);
     if (!data.id) {

@@ -1,10 +1,18 @@
 import { Product } from "../models/product.model";
 
+//Объявление интерфеса "Репозиторий"
 export interface ICatalogRepository {
-  create(data: Product): Promise<Product>;
-  update(data: Product): Promise<Product>;
-  delete(id: any);
-  find(limit: number, offset: number): Promise<Product[]>;
-  findOne(id: number): Promise<Product>;
-  findStock(ids: number[]): Promise<Product[]>;
+  /**
+   * Создать
+   *
+   * @param data Товар
+   *
+   * @return Promise<Product>  На выходе товар
+   */
+  create(data: Product): Promise<Product>; //Создать
+  update(data: Product): Promise<Product>; //Обновить
+  delete(id: any); //Удалить
+  find(limit: number, offset: number): Promise<Product[]>; //Найти
+  findOne(id: number): Promise<Product>; //Найти один
+  findStock(ids: number[]): Promise<Product[]>; //
 }

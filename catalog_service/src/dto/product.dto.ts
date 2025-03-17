@@ -1,28 +1,29 @@
-import { IsNotEmpty, IsNumber, IsString, Min } from "class-validator";
-
+import { IsNotEmpty, IsNumber, IsString, Min } from "class-validator"; //Импортируем из класса валидатора
+//Валидатор "Создать продукт"
 export class CreateProductRequest {
-  @IsString()
-  @IsNotEmpty()
+  @IsString() //Это строка
+  @IsNotEmpty() //Она не пустая
   name: string;
 
-  @IsString()
+  @IsString() //Это строка
   description: string;
 
-  @IsNumber()
-  @Min(1)
+  @IsNumber() //Оно число
+  @Min(1) //Минимальное чсило 1
   price: number;
 
-  @IsNumber()
+  @IsNumber() //Это число
   stock: number;
 }
 
+//Валилдатор "Обновить продукт"
 export class UpdateProductRequest {
-  name?: string;
+  name?: string; //Необязатоельное имя товара
 
-  description?: string;
+  description?: string; //Необязательное описание
 
-  price?: number;
+  price?: number; //Необъязательная цена
 
-  @IsNumber()
+  @IsNumber() // Необязательное количество товара, является ли оно числом
   stock?: number;
 }

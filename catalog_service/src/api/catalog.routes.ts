@@ -8,7 +8,7 @@ const router = express.Router();
 
 export const catalogService = new CatalogService(new CatalogRepository());
 
-// endpoints
+// Маршрут для создания товара
 router.post(
   "/products",
   async (req: Request, res: Response, next: NextFunction) => {
@@ -16,14 +16,14 @@ router.post(
       const { errors, input } = await RequestValidator(
         CreateProductRequest,
         req.body
-      );
+      );//Валидируем тело запроса
 
-      if (errors) return res.status(400).json(errors);
-      const data = await catalogService.createProduct(input);
-      return res.status(201).json(data);
+      if (errors) return res.status(400).json(errors); //Если ошибки сообщаем об этом
+      const data = await catalogService.createProduct(input); //Создаем товар
+      return res.status(201).json(data); //Делаем ответ о созданном товаре с кодом 201
     } catch (error) {
       const err = error as Error;
-      return res.status(500).json(err.message);
+      return res.status(500).json(err.message); //Сообщаем об ошибке
     }
   }
 );
@@ -35,13 +35,13 @@ router.patch(
       const { errors, input } = await RequestValidator(
         UpdateProductRequest,
         req.body
-      );
+      );//Делаем валидацию тела реквеста
 
-      const id = parseInt(req.params.id) || 0;
+      const id = parseInt(req.params.id) || 0; //Получаем идентификатор
 
-      if (errors) return res.status(400).json(errors);
+      if (errors) return res.status(400).json(errors); //Сообщаем об ошибке
 
-      const data = await catalogService.updateProduct({ id, ...input });
+      const data = await catalogService.updateProduct({ id, ...input }); //Обновляем товар
       return res.status(200).json(data);
     } catch (error) {
       const err = error as Error;
