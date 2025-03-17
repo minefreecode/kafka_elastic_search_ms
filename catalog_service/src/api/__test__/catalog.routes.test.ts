@@ -1,13 +1,16 @@
 import request from "supertest";
 import express from "express";
 import { faker } from "@faker-js/faker";
-import catalogRoutes, { catalogService } from "../catalog.routes";
+import catalogRoutes, { catalogService } from "../catalog.routes"; //Тестируемые сервисы и маршруты
 import { ProductFactory } from "../../utils/fixtures";
 
 const app = express();
 app.use(express.json());
 app.use(catalogRoutes);
 
+/**
+ * Объявляем Mock-реквест
+ */
 const mockRequest = () => {
   return {
     name: faker.commerce.productName(),

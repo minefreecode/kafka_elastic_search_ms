@@ -1,13 +1,14 @@
 import { DB } from "../db/db.connection";
-import { Cart, CartLineItem, cartLineItems, carts } from "../db/schema";
+import { Cart, CartLineItem, cartLineItems, carts } from "../db/schema";//Получаем схуме данных для работы с БД
 import { CartWithLineItems } from "../dto/cartRequest.dto";
 import { NotFoundError } from "../utils";
 import { eq } from "drizzle-orm";
 
-// declare repository type
+
+// Репозиторий корзин
 export type CartRepositoryType = {
   createCart: (customerId: number, lineItem: CartLineItem) => Promise<number>;
-  findCart: (id: number) => Promise<CartWithLineItems>;
+  findCart: (id: number) => Promise<CartWithLineItems>; //Получить корзину. В ответе используется Интерфейс
   updateCart: (id: number, qty: number) => Promise<CartLineItem>;
   deleteCart: (id: number) => Promise<Boolean>;
   clearCartData: (id: number) => Promise<Boolean>;

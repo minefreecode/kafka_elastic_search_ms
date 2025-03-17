@@ -14,6 +14,7 @@ export const CartEditRequestSchema = Type.Object({
 
 export type CartEditRequestInput = Static<typeof CartEditRequestSchema>;
 
+// Вспомогательный тип
 type CartLineItem = {
   id: number;
   productId: number;
@@ -26,6 +27,7 @@ type CartLineItem = {
   availability?: number;
 };
 
+//Экспортируемый интерфейс
 export interface CartWithLineItems {
   id: number;
   customerId: number;

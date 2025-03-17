@@ -2,6 +2,7 @@ import { faker } from "@faker-js/faker";
 import { Factory } from "rosie";
 import { Product } from "../../models/product.model";
 
+//Фикстуры для создания случайного товара
 export const ProductFactory = new Factory<Product>()
   .attr("id", faker.number.int({ min: 1, max: 1000 }))
   .attr("name", faker.commerce.productName())

@@ -1,6 +1,9 @@
 import { pinoHttp } from "pino-http";
 import pino from "pino";
 
+/**
+ * Логгирование происходит в pino
+ */
 export const logger = pino({
   level: "info",
   base: {

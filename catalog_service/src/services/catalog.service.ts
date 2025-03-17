@@ -37,6 +37,7 @@ export class CatalogService {
       throw new Error("unable to update product");
     }
     // emit event to update record in Elastic search
+    //При обновлении товара обновляем запись в Elastic search
     return data;
   }
 
